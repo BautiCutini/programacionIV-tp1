@@ -190,8 +190,12 @@ export function transformar<T, R>(
     elementos: T[],
     callback: (elemento: T) => R
 ): R[] {
-    // TODO
-    throw new Error("Implementar");
+    const resultado: R[] = [];
+    for (const elemento of elementos) {
+        const nuevoValor = callback(elemento);
+        resultado.push(nuevoValor);
+    }
+    return resultado;
 }
 
 // -----------------------------------------------------------------------------
@@ -207,8 +211,13 @@ export function filtrar<T>(
     elementos: T[],
     callback: (elemento: T) => boolean
 ): T[] {
-    // TODO
-    throw new Error("Implementar");
+    const resultado: T[] = [];
+    for (const elemento of elementos) {
+        if (callback(elemento)) {
+            resultado.push(elemento);
+        }
+    }
+    return resultado;
 }
 
 // -----------------------------------------------------------------------------
@@ -222,8 +231,11 @@ export function buscar<T>(
     elementos: T[],
     callback: (elemento: T) => boolean
 ): T | undefined {
-    // TODO
-    throw new Error("Implementar");
+    for (const elemento of elementos)
+        if (callback(elemento) === true) {
+            return elemento
+        }
+    return undefined
 }
 
 // -----------------------------------------------------------------------------
