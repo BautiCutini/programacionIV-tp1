@@ -80,9 +80,10 @@ export function calcularPromedio(alumnos: Alumno[]): number {
 // Devolver el alumno que tenga la nota más alta.
 // Si el arreglo está vacío, devolver undefined.
 export function obtenerMejorAlumno(alumnos: Alumno[]): Alumno | undefined {
-    if (alumnos.length === 0 ) return undefined ;
-
-
+    if (alumnos.length === 0) return undefined;
+    return alumnos.reduce((mejor, actual) =>
+        actual.nota > mejor.nota ? actual : mejor
+    );
 }
 
 // -----------------------------------------------------------------------------
