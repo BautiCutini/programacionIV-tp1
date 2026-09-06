@@ -80,8 +80,10 @@ export function calcularPromedio(alumnos: Alumno[]): number {
 // Devolver el alumno que tenga la nota más alta.
 // Si el arreglo está vacío, devolver undefined.
 export function obtenerMejorAlumno(alumnos: Alumno[]): Alumno | undefined {
-    // TODO
-    throw new Error("Implementar");
+    if (alumnos.length === 0) return undefined;
+    return alumnos.reduce((mejor, actual) =>
+        actual.nota > mejor.nota ? actual : mejor
+    );
 }
 
 // -----------------------------------------------------------------------------
@@ -93,8 +95,7 @@ export function buscarPorLegajo(
     alumnos: Alumno[],
     legajo: number
 ): Alumno | undefined {
-    // TODO
-    throw new Error("Implementar");
+    return  alumnos.find(alumno => alumno.legajo === legajo)
 }
 
 // -----------------------------------------------------------------------------
@@ -106,8 +107,7 @@ export function buscarPorNombre(
     alumnos: Alumno[],
     nombre: string
 ): Alumno | undefined {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.find(alumno => alumno.nombre === nombre)
 }
 
 // -----------------------------------------------------------------------------
@@ -116,8 +116,7 @@ export function buscarPorNombre(
 // Devolver true si existe al menos un alumno con nota menor a 6.
 // Resolver utilizando some.
 export function existeDesaprobado(alumnos: Alumno[]): boolean {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.some(alumno => alumno.nota < 6) 
 }
 
 // -----------------------------------------------------------------------------
@@ -126,8 +125,7 @@ export function existeDesaprobado(alumnos: Alumno[]): boolean {
 // Devolver true solamente si todos los alumnos tienen nota mayor o igual a 6.
 // Resolver utilizando every.
 export function todosAprobaron(alumnos: Alumno[]): boolean {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.every(alumno => alumno.nota >= 6)
 }
 
 // -----------------------------------------------------------------------------
