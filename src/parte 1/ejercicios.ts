@@ -251,8 +251,11 @@ export function calcularTotal(
     alumnos: Alumno[],
     callback: (alumno: Alumno) => number
 ): number {
-    // TODO
-    throw new Error("Implementar");
+    let total = 0;
+    for (const alumno of alumnos) {
+        total += callback(alumno);
+    }
+    return total;
 }
 
 // -----------------------------------------------------------------------------
@@ -273,8 +276,14 @@ export function calcularTotal(
 export function agruparPorCiudad(
     alumnos: Alumno[]
 ): Record<string, Alumno[]> {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.reduce((acumulador, alumno) => {
+        if (!acumulador[alumno.ciudad]) {
+            acumulador[alumno.ciudad] = [];
+        }
+        acumulador[alumno.ciudad]!.push(alumno);
+        
+        return acumulador;
+    }, {} as Record<string, Alumno[]>);
 }
 
 // -----------------------------------------------------------------------------
@@ -300,8 +309,19 @@ export interface Estadisticas {
 export function obtenerEstadisticas(
     alumnos: Alumno[]
 ): Estadisticas {
-    // TODO
-    throw new Error("Implementar");
+    const cantidadTotal = alumnos.length;
+    const cantidadAprobados = obtenerAprobados(alumnos).length;
+    const cantidadDesaprobados = cantidadTotal - cantidadAprobados;
+    const promedio = calcularPromedio(alumnos);
+    const mejorAlumno = obtenerMejorAlumno(alumnos);
+
+    return {
+        cantidadTotal,
+        cantidadAprobados,
+        cantidadDesaprobados,
+        promedio,
+        mejorAlumno
+    }
 }
 
 // -----------------------------------------------------------------------------
