@@ -81,18 +81,8 @@ export function calcularPromedio(alumnos: Alumno[]): number {
 // Devolver el alumno que tenga la nota más alta.
 // Si el arreglo está vacío, devolver undefined.
 export function obtenerMejorAlumno(alumnos: Alumno[]): Alumno | undefined {
-    if (alumnos.length === 0) {
-        return undefined;
-    }
-
-    const primerAlumno = alumnos[0];
-    if (!primerAlumno) {
-        return undefined;
-    }
-
-    return alumnos.reduce<Alumno>((mejorAlumno, alumnoActual) => {
-        return (alumnoActual.nota > mejorAlumno.nota) ? alumnoActual : mejorAlumno;
-    }, primerAlumno);
+     // TODO
+    throw new Error("Implementar");
 }
 
 // -----------------------------------------------------------------------------
@@ -117,7 +107,8 @@ export function buscarPorNombre(
     alumnos: Alumno[],
     nombre: string
 ): Alumno | undefined {
-  return alumnos.find(unAlumno => unAlumno.nombre === nombre)
+    // TODO
+    throw new Error("Implementar");
 }
 
 // -----------------------------------------------------------------------------
