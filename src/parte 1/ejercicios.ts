@@ -28,8 +28,7 @@ import { alumnos, type Alumno } from "../models/db.js";
 // obtenerNombres(alumnos)
 // -> ["Juan", "María", "Pedro", ...]
 export function obtenerNombres(alumnos: Alumno[]): string[] {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.map(alumno => alumno.nombre);
 }
 
 // -----------------------------------------------------------------------------
@@ -40,8 +39,9 @@ export function obtenerNombres(alumnos: Alumno[]): string[] {
 // Ejemplo:
 // ["Juan Pérez", "María García", ...]
 export function obtenerNombresCompletos(alumnos: Alumno[]): string[] {
-    // TODO
-    throw new Error("Implementar");
+
+    return alumnos.map(alumno => `${alumno.nombre} ${alumno.apellido}`);
+
 }
 
 // -----------------------------------------------------------------------------
@@ -49,8 +49,7 @@ export function obtenerNombresCompletos(alumnos: Alumno[]): string[] {
 // -----------------------------------------------------------------------------
 // Devolver solamente los alumnos que tengan 18 años o más.
 export function obtenerMayoresDeEdad(alumnos: Alumno[]): Alumno[] {
-    // TODO
-    throw new Error("Implementar");
+    return alumnos.filter(alumno => alumno.edad >= 18);
 }
 
 // -----------------------------------------------------------------------------
@@ -59,9 +58,8 @@ export function obtenerMayoresDeEdad(alumnos: Alumno[]): Alumno[] {
 // Un alumno aprueba cuando su nota es mayor o igual a 6.
 // Devolver los alumnos aprobados.
 export function obtenerAprobados(alumnos: Alumno[]): Alumno[] {
-    // TODO
-    throw new Error("Implementar");
-}
+    return alumnos.filter(alumno => alumno.nota >=6);
+} 
 
 // -----------------------------------------------------------------------------
 // EJERCICIO 5 - Promedio
@@ -71,8 +69,11 @@ export function obtenerAprobados(alumnos: Alumno[]): Alumno[] {
 //
 // Si el arreglo está vacío, devolver 0.
 export function calcularPromedio(alumnos: Alumno[]): number {
-    // TODO
-    throw new Error("Implementar");
+    if (alumnos.length === 0) {
+        return 0;
+    }
+    const sumaNotas = alumnos.reduce((acumulador, alumno) => acumulador + alumno.nota, 0);
+    return sumaNotas / alumnos.length;
 }
 
 // -----------------------------------------------------------------------------
@@ -136,9 +137,6 @@ export function todosAprobaron(alumnos: Alumno[]): boolean {
 // Resolver utilizando filter y length.
 export function cantidadAprobados(alumnos: Alumno[]): number {
         return alumnos.filter(alumno => alumno.nota >= 6).length;
-
-   
-    
 }
 
 // -----------------------------------------------------------------------------
@@ -149,12 +147,7 @@ export function cantidadAprobados(alumnos: Alumno[]): number {
 export function sumarEdades(alumnos: Alumno[]): number {
     return alumnos.reduce((acumulador, alumno) => {
         return acumulador + alumno.edad;
-
-    }, 0);
-
-    
-    
-   
+        }, 0);
 }
 
 // -----------------------------------------------------------------------------
@@ -185,12 +178,9 @@ export function calcularPromedioPorCiudad(
     }
 
     const suma = alumnosDeCiudad.reduce ((total , alumno) => 
-         total + alumno.nota,
-        0
-     );
-     return suma / alumnosDeCiudad.length;
-    
-   
+        total + alumno.nota,
+        0);
+        return suma / alumnosDeCiudad.length;
 }
 
 // -----------------------------------------------------------------------------
