@@ -17,7 +17,6 @@
 
 import { alumnos, type Alumno } from "../models/db.js";
 
-
 // -----------------------------------------------------------------------------
 // EJERCICIO 1 - Obtener nombres
 // -----------------------------------------------------------------------------
@@ -135,10 +134,8 @@ export function todosAprobaron(alumnos: Alumno[]): boolean {
 // Devolver la cantidad de alumnos aprobados.
 // Resolver utilizando filter y length.
 export function cantidadAprobados(alumnos: Alumno[]): number {
-        return alumnos.filter(alumno => alumno.nota >= 6).length;
-
-   
-    
+    // TODO
+    throw new Error("Implementar");
 }
 
 // -----------------------------------------------------------------------------
@@ -147,14 +144,8 @@ export function cantidadAprobados(alumnos: Alumno[]): number {
 // Calcular la suma de las edades de todos los alumnos.
 // Resolver utilizando reduce.
 export function sumarEdades(alumnos: Alumno[]): number {
-    return alumnos.reduce((acumulador, alumno) => {
-        return acumulador + alumno.edad;
-
-    }, 0);
-
-    
-    
-   
+    // TODO
+    throw new Error("Implementar");
 }
 
 // -----------------------------------------------------------------------------
@@ -165,7 +156,8 @@ export function obtenerAlumnosDeCiudad(
     alumnos: Alumno[],
     ciudad: string
 ): Alumno[] {
-    return alumnos.filter(alumno => alumno.ciudad === ciudad)   
+    // TODO
+    throw new Error("Implementar");
 }
 
 // -----------------------------------------------------------------------------
@@ -179,18 +171,8 @@ export function calcularPromedioPorCiudad(
     alumnos: Alumno[],
     ciudad: string
 ): number {
-    const alumnosDeCiudad = alumnos.filter (alumnos => alumnos.ciudad === ciudad);
-    if (alumnosDeCiudad.length === 0) {
-        return 0;
-    }
-
-    const suma = alumnosDeCiudad.reduce ((total , alumno) => 
-         total + alumno.nota,
-        0
-     );
-     return suma / alumnosDeCiudad.length;
-    
-   
+    // TODO
+    throw new Error("Implementar");
 }
 
 // -----------------------------------------------------------------------------

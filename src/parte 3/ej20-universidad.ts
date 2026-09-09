@@ -20,8 +20,6 @@
  * solamente del lado de la materia.
  */
 
-import { a } from "vitest/dist/chunks/suite.B2jumIFP.js";
-
 export abstract class Persona {
     constructor(
         public legajo: number,
@@ -44,42 +42,28 @@ export class Materia {
     ) {}
 
     inscribirAlumno(alumno: Alumno): void {
-        if (!this.alumnosInscriptos.some (a => a.legajo === alumno.legajo)) {
-              this.alumnosInscriptos.push(alumno);
-
-        }
-          
-    
+        // TODO: agregar el alumno si no está ya inscripto (comparar por legajo).
+        throw new Error("Implementar");
     }
 
-  quitarAlumno(alumno: Alumno): void {
-    const indice = this.alumnosInscriptos.findIndex(
-        a => a.legajo === alumno.legajo
-    );
-
-    if (indice !== -1) {
-        this.alumnosInscriptos.splice(indice, 1);
+    quitarAlumno(alumno: Alumno): void {
+        // TODO: quitar el alumno de la lista, si está.
+        throw new Error("Implementar");
     }
-}
+
     asignarDocente(docente: Docente): void {
-           
-            if (!this.docentesAsignados.some (a => a.legajo === docente.legajo))
-                this.docentesAsignados.push (docente);
-        
+        // TODO: agregar el docente si no está ya asignado (comparar por legajo).
+        throw new Error("Implementar");
     }
 
     getAlumnosInscriptos(): Alumno[] {
-        
-         console.log(this.alumnosInscriptos)
-         return [...this.alumnosInscriptos]
-       
+        // TODO: devolver una copia, no la referencia interna.
+        throw new Error("Implementar");
     }
 
     getDocentesAsignados(): Docente[] {
-        
-        console.log(this.docentesAsignados)
-        return [...this.docentesAsignados]
-        
+        // TODO: devolver una copia, no la referencia interna.
+        throw new Error("Implementar");
     }
 }
 
@@ -91,33 +75,26 @@ export class Alumno extends Persona {
     }
 
     inscribirse(materia: Materia): void {
-        
-        if (!this.materias.some(m => m.codigo === materia.codigo ))
-            this.materias.push(materia);
-            materia.inscribirAlumno(this);
-       
-       
+        // TODO: agregar la materia a este alumno (si no estaba ya) y avisarle
+        // a la materia llamando a materia.inscribirAlumno(this).
+        throw new Error("Implementar");
     }
 
     quitarMateria(materia: Materia): void {
-       
-        const indice = this.materias.findIndex(
-            m => m.codigo === materia.codigo
-        );
-        if (indice !== 1){
-            this.materias.splice(indice, 1)
-            materia.quitarAlumno(this)
-        }
-        
+        // TODO: quitar la materia de este alumno y avisarle a la materia
+        // llamando a materia.quitarAlumno(this).
+        throw new Error("Implementar");
     }
 
     getMaterias(): Materia[] {
-         return [...this.materias]
+        // TODO: devolver una copia, no la referencia interna.
+        throw new Error("Implementar");
     }
 
     obtenerInformacion(): string {
-            return `Alumno: ${this.nombre} ${this.apellido}, Legajo: ${this.legajo}, Materias inscriptas: ${this.materias.length}`;
-     
+        // TODO: devolver un string que incluya nombre, apellido, legajo y
+        // la cantidad de materias inscriptas, mencionando "Alumno".
+        throw new Error("Implementar");
     }
 }
 
@@ -135,20 +112,19 @@ export class Docente extends Persona {
     }
 
     asignarMateria(materia: Materia): void {
-       if (!this.materiasAsignadas.some(m => m.codigo === materia.codigo)) {
-        this.materiasAsignadas.push(materia);
-        materia.asignarDocente(this);
-
-       }
-       
+        // TODO: agregar la materia a este docente (si no estaba ya) y
+        // avisarle a la materia llamando a materia.asignarDocente(this).
+        throw new Error("Implementar");
     }
 
     getMateriasAsignadas(): Materia[] {
-       return [...this.materiasAsignadas]
-      
+        // TODO: devolver una copia, no la referencia interna.
+        throw new Error("Implementar");
     }
 
     obtenerInformacion(): string {
-         return `Docente: ${this.nombre} ${this.apellido}, Legajo: ${this.legajo}, Especialidad: ${this.especialidad}`;
+        // TODO: devolver un string que incluya nombre, apellido, legajo y
+        // especialidad, mencionando "Docente".
+        throw new Error("Implementar");
     }
 }
